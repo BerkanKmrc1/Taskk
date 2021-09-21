@@ -1,0 +1,32 @@
+﻿@using Taskk.Models.Entity
+@model List<Phone>
+@{
+    ViewBag.Title = "PhoneList";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Phone Id</th>
+        <th>Personal </th>
+        <th>Phone Number</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    
+    </tr>
+    <tbody>
+        @foreach (var phn in Model)
+        {
+        <tr>
+            <th>@phn.ID</th>
+            <td>@phn.Personal1.Name</td>
+            <td>@phn.PhoneNumber</td>
+            <td><a href="/Phone/DeletePhone/@phn.ID" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Phone/UpdatePhone/@phn.ID" class="btn btn-success">GÜNCELLE</a></td>
+        </tr>
+        }
+    </tbody>
+
+</table>
+<a href="/Phone/AddPhone/" class="btn btn-primary">Yeni Telefon Ekle</a>
+

@@ -1,0 +1,35 @@
+﻿@using Taskk.Models.Entity
+@model List<Personal>
+@{
+    ViewBag.Title = "PersonalList";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Personal Id</th>
+        <th>Personal Name</th>
+        <th>Personal Surname</th>
+        <th>Personal Email</th>
+        <th>Personal BirhDay</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+    <tbody>
+        @foreach (var prs in Model)
+        {
+        <tr>
+            <th>@prs.ID</th>
+            <td>@prs.Name</td>
+            <td>@prs.Surname</td>
+            <td>@prs.Email</td>
+            <td>@prs.BirthDay</td>
+            <td><a href="/Personal/DeletePersonal/@prs.ID" class="btn btn-danger">SİL</a></td>
+            <td><a href="/Personal/GetPersonal/@prs.ID" class="btn btn-success">GÜNCELLE</a></td>
+
+        </tr>
+        }
+    </tbody>
+
+</table>
+<a href="/Personal/AddPersonal/" class="btn btn-primary">Yeni Personel Ekle</a>

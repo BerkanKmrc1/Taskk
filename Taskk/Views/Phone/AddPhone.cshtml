@@ -1,0 +1,27 @@
+﻿@model Taskk.Models.Entity.Phone
+@{
+    ViewBag.Title = "AddPhone";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form method="post" class="form-group">
+    @*<div>
+            <label>Telefon Numarası</label>
+            <input type="text" class="form-control" name="PhoneNumber" />
+
+        </div>*@
+    <div>
+        <label>Personel Adı</label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @style = "color:red" })
+        <br />
+    </div>
+    <div>
+        <label>Kişi Kontağı Seçiniz</label>
+        @Html.DropDownListFor(m => m.Personal1.ID, (List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Telefon Ekle</button>
+    </div>
+
+</form>

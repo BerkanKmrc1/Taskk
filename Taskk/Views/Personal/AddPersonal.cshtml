@@ -1,0 +1,42 @@
+﻿@model Taskk.Models.Entity.Personal
+@{
+    ViewBag.Title = "AddPersonal";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+    @*<div>
+        <label>Personel Adı</label>
+        <input type="text" class="form-control" name="Name" />
+        <label>Personel Soyadı</label>
+        <input type="text" class="form-control" name="Surname" />
+        <label>Personel Email</label>
+        <input type="text" class="form-control" name="Email" />
+        <label>Personel Doğum Tarihi</label>
+        <input type="text" class="form-control" name="Birthday" />
+    </div>*@
+    <div>
+        <label>Personel Adı</label>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Name, "", new { @style = "color:red" })
+        <br />
+        <label>Personel Soyadı</label>
+        @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Surname, "", new { @style = "color:red" })
+        <br />
+        <label>Personel Emaili</label>
+        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Email, "", new { @style = "color:red" })
+        <br />
+        <label>Personel Doğum Tarihi</label>
+        @Html.TextBoxFor(m => m.BirthDay, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.BirthDay, "", new { @style = "color:red" })
+        <br />
+    </div>
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Personel Ekle</button>
+    </div>
+
+
+</form>
+
