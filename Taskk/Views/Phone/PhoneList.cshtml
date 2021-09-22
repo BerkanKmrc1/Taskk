@@ -4,7 +4,14 @@
     ViewBag.Title = "PhoneList";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
+@if (TempData["ErrorPhone"] == "errorlinePhone")
+{
 
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Telefon numarası sistemde var</strong>
+    </div>
+}
 <table class="table table-bordered">
     <tr>
         <th>Phone Id</th>
@@ -12,18 +19,18 @@
         <th>Phone Number</th>
         <th>SİL</th>
         <th>GÜNCELLE</th>
-    
+
     </tr>
     <tbody>
         @foreach (var phn in Model)
         {
-        <tr>
-            <th>@phn.ID</th>
-            <td>@phn.Personal1.Name</td>
-            <td>@phn.PhoneNumber</td>
-            <td><a href="/Phone/DeletePhone/@phn.ID" class="btn btn-danger">SİL</a></td>
-            <td><a href="/Phone/GetPhone/@phn.ID" class="btn btn-success">GÜNCELLE</a></td>
-        </tr>
+            <tr>
+                <th>@phn.ID</th>
+                <td>@phn.Personal1.Name</td>
+                <td>@phn.PhoneNumber</td>
+                <td><a href="/Phone/DeletePhone/@phn.ID" class="btn btn-danger">SİL</a></td>
+                <td><a href="/Phone/GetPhone/@phn.ID" class="btn btn-success">GÜNCELLE</a></td>
+            </tr>
         }
     </tbody>
 

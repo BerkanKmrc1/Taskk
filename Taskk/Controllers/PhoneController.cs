@@ -70,9 +70,16 @@ namespace Taskk.Controllers
             ViewBag.dgr = degerler;
             return View("GetPhone", phone);
         }
+        [HttpPost]
         public ActionResult UpdatePhone(Phone p)
         {
             var phone = db.Phones.Find(p.ID);
+            var a = db.Phones.Any(m => m.PhoneNumber == p.PhoneNumber);
+            if (a)
+            {
+                TempData["ErrorPhone"] = "errorlinePhone";
+                return RedirectToAction("PhoneList", "Phone");
+            }
             phone.PhoneNumber = p.PhoneNumber;
             //phone.Personal = p.Personal;
             var prs = db.Personals.Where(m => m.ID == p.Personal1.ID).FirstOrDefault();
