@@ -3,6 +3,22 @@
     ViewBag.Title = "AddPhone";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
+@if (TempData["Error"] == "errorline")
+{
+
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Telefon numarası sistemde var</strong>
+    </div>
+}
+@if (TempData["Error2"] == "errorline2")
+{
+
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>Telefon numarası maksimum 10 karakter olmalı</strong>
+    </div>
+}
 
 <form method="post" class="form-group">
     @*<div>
@@ -11,9 +27,9 @@
 
         </div>*@
     <div>
-        <label>Personel Adı</label>
-        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.Name, "", new { @style = "color:red" })
+        <label>Telefon Numarası</label>
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @maxlength = "10" })
+        @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @style = "color:red" })
         <br />
     </div>
     <div>

@@ -4,16 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TaskDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TaskDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Personals">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="10" />
-          <Property Name="Surname" Type="nchar" MaxLength="10" />
-          <Property Name="Email" Type="nchar" MaxLength="10" />
-          <Property Name="BirthDay" Type="nchar" MaxLength="10" />
+          <Property Name="Name" Type="nchar" MaxLength="50" />
+          <Property Name="Surname" Type="nchar" MaxLength="50" />
+          <Property Name="Email" Type="nchar" MaxLength="50" />
+          <Property Name="BirthDay" Type="nchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="Phones">
           <Key>
@@ -21,7 +22,8 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Personal" Type="int" />
-          <Property Name="PhoneNumber" Type="nchar" MaxLength="10" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -54,8 +56,7 @@
             <End Role="Phones" EntitySet="Phones" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TaskDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -64,11 +65,12 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Surname" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="BirthDay" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="BirthDay" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Phones" Relationship="Self.FK_Phones_Personal" FromRole="Personals" ToRole="Phones" />
+          <Property Name="Status" Type="Boolean" />
         </EntityType>
         <EntityType Name="Phone">
           <Key>
@@ -76,8 +78,9 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Personal" Type="Int32" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Personal1" Relationship="Self.FK_Phones_Personal" FromRole="Phones" ToRole="Personals" />
+          <Property Name="Status" Type="Boolean" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -119,6 +122,7 @@
           <EntitySetMapping Name="Personals">
             <EntityTypeMapping TypeName="TaskDatabaseModel.Personal">
               <MappingFragment StoreEntitySet="Personals">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -130,6 +134,7 @@
           <EntitySetMapping Name="Phones">
             <EntityTypeMapping TypeName="TaskDatabaseModel.Phone">
               <MappingFragment StoreEntitySet="Phones">
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Personal" ColumnName="Personal" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />

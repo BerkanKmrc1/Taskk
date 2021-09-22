@@ -11,8 +11,7 @@ namespace Taskk.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Personal
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,14 +21,11 @@ namespace Taskk.Models.Entity
         }
     
         public int ID { get; set; }
-        [Required(ErrorMessage ="Personel Adýný Giriniz")]
         public string Name { get; set; }
-        [Required(ErrorMessage = "Personel Soyadýný Giriniz")]
         public string Surname { get; set; }
-        [Required(ErrorMessage = "Personel Emailini Giriniz")]
         public string Email { get; set; }
-        [Required(ErrorMessage = "Personel Doðum Tarihini Giriniz")]
         public string BirthDay { get; set; }
+        public Nullable<bool> Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Phone> Phones { get; set; }

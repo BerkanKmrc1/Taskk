@@ -12,7 +12,7 @@ namespace Taskk.Controllers
         // GET: Personal
         public ActionResult PersonalList()
         {
-            var degerler = db.Personals.ToList();
+            var degerler = db.Personals.Where(m=>m.Status ==true).ToList();
             return View(degerler);
         }
         [HttpGet]
@@ -24,18 +24,19 @@ namespace Taskk.Controllers
         [HttpPost]
         public ActionResult AddPersonal(Personal p1)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View("AddPersonal");
             }
             db.Personals.Add(p1);
             db.SaveChanges();
-            return View("PersonalList");
+            return RedirectToAction("PersonalList");
         }
         public ActionResult DeletePersonal(int id)
         {
             var personal = db.Personals.Find(id);
-            db.Personals.Remove(personal);
+            //db.Personals.Remove(personal);
+            personal.Status = false;
             db.SaveChanges();
             return RedirectToAction("PersonalList");
         }

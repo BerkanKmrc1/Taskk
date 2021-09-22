@@ -219,6 +219,7 @@
     <Content Include="Views\Personal\AddPersonal.cshtml" />
     <Content Include="Views\Phone\AddPhone.cshtml" />
     <Content Include="Views\Personal\GetPersonal.cshtml" />
+    <Content Include="Views\Phone\GetPhone.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

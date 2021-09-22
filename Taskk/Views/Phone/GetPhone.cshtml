@@ -1,0 +1,27 @@
+﻿@model Taskk.Models.Entity.Phone
+@{
+    ViewBag.Title = "GetPhone";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("UpdatePhone", "Phone", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ID)
+        @Html.TextBoxFor(m => m.ID, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhoneNumber)
+        @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Personal)
+        @Html.DropDownListFor(m=>m.Personal1.ID,(List<SelectListItem>)ViewBag.dgr, new { @class = "form-control" })
+        @*@Html.TextBoxFor(m => m.Personal, new { @class = "form-control" })*@
+    </div>
+
+    <div>
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}
+

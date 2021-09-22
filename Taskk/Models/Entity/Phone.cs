@@ -11,14 +11,13 @@ namespace Taskk.Models.Entity
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Phone
     {
         public int ID { get; set; }
         public Nullable<int> Personal { get; set; }
-        [Required(ErrorMessage = "Telefon Numarasý Giriniz")]
         public string PhoneNumber { get; set; }
+        public Nullable<bool> Status { get; set; }
     
         public virtual Personal Personal1 { get; set; }
     }
