@@ -14,6 +14,10 @@ namespace Taskk.Models.Entity
     
     public partial class Phone
     {
+        public Phone()
+        {
+            Status = true;
+        }
         public int ID { get; set; }
         public Nullable<int> Personal { get; set; }
         public string PhoneNumber { get; set; }

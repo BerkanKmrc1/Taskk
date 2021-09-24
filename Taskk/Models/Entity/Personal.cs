@@ -18,6 +18,7 @@ namespace Taskk.Models.Entity
         public Personal()
         {
             this.Phones = new HashSet<Phone>();
+            Status = true;
         }
     
         public int ID { get; set; }
